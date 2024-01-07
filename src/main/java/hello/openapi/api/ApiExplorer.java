@@ -58,7 +58,6 @@ public class ApiExplorer {
         JSONArray item = (JSONArray) getFoodKr.get("item");
 
         //item의 각 요소의 정보를 Map에 저장 후 List에 저장.
-
         List<Map<String, String>> listMap = new ArrayList<Map<String, String>>();
 
         if (item.size() > 0) {
@@ -66,10 +65,13 @@ public class ApiExplorer {
                 Map<String, String> map = new HashMap<String, String>();
 
                 JSONObject element = (JSONObject)item.get(i);
+
                 map.put("PLACE",(String)element.get("MAIN_TITLE"));
                 map.put("CNTCT_TEL",(String)element.get("CNTCT_TEL"));
                 map.put("HOMEPAGE_URL",(String)element.get("HOMEPAGE_URL"));
                 map.put("ITEMCNTNTS",(String)element.get("ITEMCNTNTS"));
+                map.put("MAIN_IMG_THUMB",(String)element.get("MAIN_IMG_THUMB"));
+
 
                 listMap.add(map);
             }

@@ -2,44 +2,53 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <title>Map List Example</title>
+    <title>부산 맛집 소개</title>
+    <link rel="stylesheet" href="/css/bootstrap.min.css">
     <style>
-        table {
-            border-collapse: collapse;
-            width: 100%;
+        body {
+            background-color: #f8f9fa; /* 페이지 배경색 지정 */
         }
 
-        th, td {
-            border: 1px solid #dddddd;
-            text-align: left;
-            padding: 8px; /* 조절 가능한 행 간격 */
+        .container {
+            background-color: #ffffff; /* 카드들을 감싸는 컨테이너 배경색 지정 */
+            padding: 20px;
+            border-radius: 10px; /* 컨테이너의 모서리를 둥글게 만듦 */
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* 그림자 효과 추가 */
         }
 
-        th {
-            background-color: #f2f2f2;
+        h1 {
+            color: #343a40; /* 제목 글자색 지정 */
+            text-align: center;
+            margin-bottom: 30px;
         }
     </style>
 </head>
 <body>
 
-<table>
-    <thead>
-    <tr>
-        <th>PLACE</th>
-        <th>CNTCT_TEL</th>
-        <th>HOMEPAGE_URL</th>
-        <th>ITEMCNTNTS</th>
-    </tr>
-    </thead>
-    <tbody>
-    <tr th:each="map : ${listMap}">
-        <td th:text="${map.PLACE}"></td>
-        <td th:text="${map.CNTCT_TEL}"></td>
-        <td th:text="${map.HOMEPAGE_URL}"></td>
-        <td th:text="${map.ITEMCNTNTS}"></td>
-    </tr>
-    </tbody>
-</table>
+<div class="container mt-5">
+    <h1>부산 맛집 소개</h1>
+
+    <div class="row">
+        <div th:each="map : ${listMap}" class="col-md-4 mb-3">
+            <div class="card">
+                <img th:src="${map.MAIN_IMG_THUMB}" class="card-img-top" alt="맛집 이미지">
+                <div class="card-body">
+                    <h5 class="card-title" th:text="${map.PLACE}"></h5>
+                    <p class="card-text">전화번호: <span th:text="${map.CNTCT_TEL}"></span></p>
+                    <p class="card-text" th:if="${map.HOMEPAGE_URL} != null">홈페이지: <a th:href="${map.HOMEPAGE_URL}" th:text="${map.HOMEPAGE_URL}" target="_blank"></a></p>
+                    <p class="card-text" th:text="${map.ITEMCNTNTS}"></p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
 
 </body>
 </html>
+
+
