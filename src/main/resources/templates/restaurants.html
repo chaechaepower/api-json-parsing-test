@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Map List Example</title>
+    <style>
+        table {
+            border-collapse: collapse;
+            width: 100%;
+        }
+
+        th, td {
+            border: 1px solid #dddddd;
+            text-align: left;
+            padding: 8px; /* 조절 가능한 행 간격 */
+        }
+
+        th {
+            background-color: #f2f2f2;
+        }
+    </style>
+</head>
+<body>
+
+<table>
+    <thead>
+    <tr>
+        <th>PLACE</th>
+        <th>CNTCT_TEL</th>
+        <th>HOMEPAGE_URL</th>
+        <th>ITEMCNTNTS</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="map : ${listMap}">
+        <td th:text="${map.PLACE}"></td>
+        <td th:text="${map.CNTCT_TEL}"></td>
+        <td th:text="${map.HOMEPAGE_URL}"></td>
+        <td th:text="${map.ITEMCNTNTS}"></td>
+    </tr>
+    </tbody>
+</table>
+
+</body>
+</html>
